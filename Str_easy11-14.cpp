@@ -24,20 +24,26 @@ int itc_find_str(string s1, string s2) {
 		return 0;
 	if (l1 < l2)
 		return -1;
-	long long j = 0, n = -1;
-	for (long long i = 0; i < l1 - l2; i++) {
-		if (s1[i] == s2[j]) {
-			j++;
-			n = i;
-			if (j == l2) {
-				n -= l2;
-				n++;
-				break;
-			}
+	if (l1 == l2) {
+		for (int i = 0; i < l1; i++) {
+			if (s1[i] != s2[i])
+				return -1;
 		}
-		else {
-			j = 0;
-			n = -1;
+		return 0;
+	}
+	int n = -1;
+	for (int i = 0; i < l1 - l2; i++) {
+		if (s1[i] == s2[0]) {
+			n = i;
+			for (int j = 1; j < l1; j++) {
+				i++;
+				if (j == l2)
+					return n;
+				if (s1[i] != s2[j]) {
+					n = -1;
+					break;
+				}
+			}
 		}
 	}
 	return n;
