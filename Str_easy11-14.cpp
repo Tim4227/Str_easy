@@ -32,7 +32,7 @@ int itc_find_str(string s1, string s2) {
 		return 0;
 	}
 	int n = -1;
-	for (int i = 0; i < l1 - l2; i++) {
+	for (int i = 0; i <= l1 - l2; i++) {
 		if (s1[i] == s2[0]) {
 			n = i;
 			for (int j = 1; j < l1; j++) {
